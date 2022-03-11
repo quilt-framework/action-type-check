@@ -9,6 +9,10 @@ inputs:
     description: "The command to run to start sewing-kit’s type-check"
     required: false
     default: "node_modules/.bin/sewing-kit type-check"
+  cache-key:
+    description: "A key to include in caching TypeScript’s outputs"
+    required: false
+    default: "v1"
 runs:
   using: "composite"
   steps:
@@ -19,9 +23,9 @@ runs:
         path: |
           **/build/typescript/
           **/*.tsbuildinfo
-        key: ${{ runner.os }}-typescript-v1-${{ github.sha }}
+        key: ${{ runner.os }}-typescript-${{ inputs.cache-key }}-${{ github.sha }}
         restore-keys: |
-          ${{ runner.os }}-typescript-v1-
+          ${{ runner.os }}-typescript-${{ inputs.cache-key }}-
 
     - name: Type check
       run: ${{ inputs.command }} ${{ inputs.arguments }}

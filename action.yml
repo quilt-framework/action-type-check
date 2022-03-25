@@ -2,13 +2,13 @@ name: Type check
 description: "Runs Quilt’s type-check command on your workspace"
 inputs:
   arguments:
-    description: "Additional arguments to pass to sewing-kit’s type-check command"
+    description: "Additional arguments to pass to Quilt’s type-check command"
     required: false
     default: ""
   command:
-    description: "The command to run to start sewing-kit’s type-check"
+    description: "The command to run to start Quilt’s type-check"
     required: false
-    default: "node_modules/.bin/sewing-kit type-check"
+    default: "node_modules/.bin/quilt type-check"
   cache-key:
     description: "A key to include in caching TypeScript’s outputs"
     required: false
